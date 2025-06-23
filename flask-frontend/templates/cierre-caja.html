@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cierre de Caja</title>
+</head>
+<body>
+    <h1>Cierre de Caja - Ventas del Día</h1>
+
+    {% if ventas %}
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID Venta</th>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th>Precio Unitario</th>
+                    <th>Total</th>
+                    <th>Medio de Pago</th>
+                    <th>Fecha</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for venta in ventas %}
+                    <tr>
+                        <td>{{ venta.idVenta }}</td>
+                        <td>{{ venta.producto.nombre_producto }}</td>
+                        <td>{{ venta.cantidad }}</td>
+                        <td>{{ venta.precioUnitario }}</td>
+                        <td>{{ venta.cantidad * venta.precioUnitario }}</td>
+                        <td>{{ venta.medioPago.nombre_MedioPago }}</td>
+                        <td>{{ venta.fecha }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <h2>Total del Día: {{ total }}</h2>
+    {% else %}
+        <p>No hay ventas registradas hoy.</p>
+    {% endif %}
+</body>
+</html>
+
+<!-- This template displays a summary of sales for the day, including product details, quantity, unit price, payment method, date, and total amount. -->

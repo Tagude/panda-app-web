@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <link rel="stylesheet" href="static/CSS/styles.css">
+    <link rel="shortcut icon" href="static/IMG/PANDA icon.ico" type="image/x-icon">
+</head>
+<body>
+
+<div class="login-box">
+    <img class="avatar" src="static/IMG/PANDA.webp" alt="Logo de PANDA">
+    <h1>PANDA</h1>
+    <form action="/registrar-usuario" method="POST">
+    <label for="nombre">Nombre</label>
+    <input type="text" id="nombre" name="nombre" required>
+
+    <label for="usuario">Usuario</label>
+    <input type="text" id="usuario" name="usuario" required>
+
+    <label for="correo">Correo</label>
+    <input type="text" id="correo" name="correo" required>
+
+    <label for="contrasena">Contraseña</label>
+    <input type="password" id="contrasena" name="contrasena" required>
+
+    <input type="submit" value="Registrarse">
+
+        <a href="{{ url_for('login') }}">Regresar</a>
+    </form>
+</div>
+
+<script>
+    document.querySelector("form").addEventListener("submit", function (event) {
+        const password = document.getElementById("password").value;
+        if (password === '') {
+            alert("La contraseña es obligatoria");
+            event.preventDefault();
+        }
+    });
+</script>
+
+</body>
+</html>

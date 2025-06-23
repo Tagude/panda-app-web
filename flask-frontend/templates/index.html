@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="static/CSS/styles.css">
+    <link rel="shortcut icon" href="static/images/favicon/favicon-32x32.png" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/49f031506e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+    <link rel="shortcut icon" href="static/IMG/PANDA icon.ico" type="image/x-icon">
+  <style>
+    .flashes li {
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 8px;
+      display: inline-block;
+    }
+    .success { background-color: #d4edda; color: #155724; }
+    .error { background-color: #f8d7da; color: #721c24; }
+    .warning { background-color: #fff3cd; color: #856404; }
+    .info { background-color: #d1ecf1; color: #0c5460; }
+  </style>
+</head>
+<body>
+  {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <ul class="flashes">
+      {% for category, message in messages %}
+        <li class="{{ category }}">{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+<script>
+  // Desaparecer los mensajes flash después de 5 segundos
+  setTimeout(() => {
+    const flashes = document.querySelector('.flashes');
+    if (flashes) {
+      flashes.style.display = 'none';
+    }
+  }, 5000);
+</script>
+<div class="login-box">
+    <img class="avatar" src="static/IMG/PANDA.webp" alt="Logo de PANDA">
+    <h1>PANDA</h1>
+    <form action="/login" method="POST">
+        <label for="usuario">Usuario</label>
+        <input type="text" name="usuario" id="usuario" placeholder="Ingrese usuario" required>
+
+        <label for="contrasena">Contraseña</label>
+        <input type="password" name="contrasena" id="contrasena" placeholder="Ingrese contraseña" required>
+
+        <input type="submit" value="Iniciar sesión">
+        <a href="#">Olvidé mi contraseña</a><br>
+        <a href="{{ url_for('registrar_usuario') }}">Registrarse</a>
+    </form>
+</div>
+    <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+</body>
+</html>
