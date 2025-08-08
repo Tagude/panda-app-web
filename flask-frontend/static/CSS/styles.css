@@ -168,3 +168,143 @@ header .opciones img{
   color: green;
   margin-top: 5px;
 }
+
+body {
+    background: url(../IMG/fondo-ambar-acuarela_23-2150270309.avif) no-repeat center top;
+    background-size: cover;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    padding-top: 60px;
+}
+
+h1 {
+    color: #2d3436;
+    font-size: 2.5rem;
+}
+
+.icon {
+    font-size: 4rem;
+}
+
+.opciones {
+    margin-top: 40px;
+}
+
+.opciones a {
+    text-decoration: none;
+    color: #2d3436;
+    margin: 0 20px;
+    font-size: 1.2rem;
+    border: 2px solid #2d3436;
+    padding: 10px 20px;
+    border-radius: 10px;
+    background-color: #fff;
+    transition: 0.3s;
+}
+
+.opciones a:hover {
+    background-color: #ffeaa7;
+    color: #d35400;
+}
+
+.container {
+    max-width: 500px;
+    margin: 50px auto;
+    background-color: #fef9e7;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.container h1 {
+    text-align: center;
+    color: #2d3436;
+    margin-bottom: 30px;
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+}
+
+.formulario label {
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #2d3436;
+}
+
+.formulario input,
+.formulario select {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+.formulario input[readonly] {
+    background-color: #f0f0f0;
+}
+
+.boton {
+    margin-top: 25px;
+    background-color: #fdcb6e;
+    border: none;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #2d3436;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.boton:hover {
+    background-color: #f6b93b;
+}
+
+.boton-regresar {
+    display: inline-block;
+    margin-top: 20px;
+    background-color: #ffeaa7;
+    color: #2d3436;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-weight: bold;
+    border-radius: 8px;
+    border: 2px solid #2d3436;
+    transition: 0.3s ease;
+    text-align: center;
+}
+
+.boton-regresar:hover {
+    background-color: #fdcb6e;
+    color: #d35400;
+}
+
+.tabla-productos {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px;
+}
+
+.tabla-productos th,
+.tabla-productos td {
+    border: 1px solid #ccc;
+    padding: 12px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.tabla-productos th {
+    background-color: #fdcb6e;
+    color: #2d3436;
+}
+
+.tabla-productos tr:nth-child(even) {
+    background-color: #fff8e1;
+}
+
+.tabla-productos tr:hover {
+    background-color: #ffeaa7;
+}

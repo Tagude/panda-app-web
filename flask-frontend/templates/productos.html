@@ -3,13 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <title>Lista de Productos</title>
+    <link rel="shortcut icon" href="static/images/favicon/favicon-32x32.png" type="image/x-icon">
+    <script src="htps://kit.fontawesome.com/49f031506e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+    <link rel="shortcut icon" href="static/IMG/PANDA icon.ico" type="imagte/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/styles.css') }}">
 </head>
 <body>
-    <h1>Productos disponibles</h1>
-    <ul>
-        {% for producto in productos %}
-            <li>{{ producto.nombre_producto }} - Stock: {{ producto.stock }} - Precio: {{ producto.precio_venta }}</li>
-        {% endfor %}
-    </ul>
+    <div class="container">
+        <h1>📦 Inventario de productos</h1>
+
+        {% if productos %}
+            <table class="tabla-productos">
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Stock</th>
+                        <th>Precio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for producto in productos %}
+                    <tr>
+                        <td>{{ producto.nombre_producto }}</td>
+                        <td>{{ producto.stock }}</td>
+                        <td>${{ producto.precio_venta }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No hay productos registrados.</p>
+        {% endif %}
+
+        <a href="{{ url_for('bienvenida') }}" class="boton-regresar">← Volver al menú principal</a>
+    </div>
 </body>
 </html>

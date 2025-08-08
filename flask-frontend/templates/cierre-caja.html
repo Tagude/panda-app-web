@@ -1,44 +1,53 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
+    <meta charset="UTF-8">
     <title>Cierre de Caja</title>
+    <link rel="shortcut icon" href="static/images/favicon/favicon-32x32.png" type="image/x-icon">
+    <script src="htps://kit.fontawesome.com/49f031506e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+    <link rel="shortcut icon" href="static/IMG/PANDA icon.ico" type="imagte/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/styles.css') }}">
 </head>
 <body>
-    <h1>Cierre de Caja - Ventas del Día</h1>
+    <div class="container">
+        <h1>💵 Cierre de Caja - Ventas del Día</h1>
 
-    {% if ventas %}
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>ID Venta</th>
-                    <th>Producto</th>
-                    <th>Cantidad</th>
-                    <th>Precio Unitario</th>
-                    <th>Total</th>
-                    <th>Medio de Pago</th>
-                    <th>Fecha</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for venta in ventas %}
+        {% if ventas %}
+            <table class="tabla-productos">
+                <thead>
                     <tr>
-                        <td>{{ venta.idVenta }}</td>
-                        <td>{{ venta.producto.nombre_producto }}</td>
-                        <td>{{ venta.cantidad }}</td>
-                        <td>{{ venta.precioUnitario }}</td>
-                        <td>{{ venta.cantidad * venta.precioUnitario }}</td>
-                        <td>{{ venta.medioPago.nombre_MedioPago }}</td>
-                        <td>{{ venta.fecha }}</td>
+                        <th>ID Venta</th>
+                        <th>Producto</th>
+                        <th>Cantidad</th>
+                        <th>Precio Unitario</th>
+                        <th>Total</th>
+                        <th>Medio de Pago</th>
+                        <th>Fecha</th>
                     </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    {% for venta in ventas %}
+                        <tr>
+                            <td>{{ venta.idVenta }}</td>
+                            <td>{{ venta.producto.nombre_producto }}</td>
+                            <td>{{ venta.cantidad }}</td>
+                            <td>${{ venta.precioUnitario }}</td>
+                            <td>${{ venta.cantidad * venta.precioUnitario }}</td>
+                            <td>{{ venta.medioPago.nombre_MedioPago }}</td>
+                            <td>{{ venta.fecha }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
 
-        <h2>Total del Día: {{ total }}</h2>
-    {% else %}
-        <p>No hay ventas registradas hoy.</p>
-    {% endif %}
+            <h2 style="margin-top: 30px; color: green;">🧾 Total del Día: <strong>${{ total }}</strong></h2>
+        {% else %}
+            <p>No hay ventas registradas hoy.</p>
+        {% endif %}
+
+        <a href="{{ url_for('bienvenida') }}" class="boton-regresar">← Volver al menú principal</a>
+    </div>
 </body>
 </html>
-
-<!-- This template displays a summary of sales for the day, including product details, quantity, unit price, payment method, date, and total amount. -->

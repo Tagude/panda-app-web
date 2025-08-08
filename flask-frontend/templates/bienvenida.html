@@ -3,51 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <title>Bienvenida</title>
-    <link rel="stylesheet" href="static/CSS/styles.css">
-    <style>
-        body {
-            background: linear-gradient(to right, #ffeaa7, #fdcb6e);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            text-align: center;
-            padding-top: 60px;
-        }
-        h1 {
-            color: #2d3436;
-            font-size: 2.5rem;
-        }
-        .icon {
-            font-size: 4rem;
-        }
-        .opciones {
-            margin-top: 40px;
-        }
-        .opciones a {
-            text-decoration: none;
-            color: #2d3436;
-            margin: 0 20px;
-            font-size: 1.2rem;
-            border: 2px solid #2d3436;
-            padding: 10px 20px;
-            border-radius: 10px;
-            background-color: #fff;
-            transition: 0.3s;
-        }
-        .opciones a:hover {
-            background-color: #ffeaa7;
-            color: #d35400;
-        }
-    </style>
+    <link rel="shortcut icon" href="static/images/favicon/favicon-32x32.png" type="image/x-icon">
+    <script src="htps://kit.fontawesome.com/49f031506e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+    <link rel="shortcut icon" href="static/IMG/PANDA icon.ico" type="imagte/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/styles.css') }}">
 </head>
 <body>
     <h1 class="icon">🐼</h1>
     <h1>Bienvenido, {{ session['usuario'] }} 👋</h1>
     <div class="opciones">
-        <a href="{{ url_for('nueva_venta') }}">Registrar Venta</a>
-        <a href="{{ url_for('listar_productos') }}">Inventario</a>
-        <a href="#">Reportes</a>
-        <a href="{{ url_for('nuevo_producto') }}">Nuevo Producto</a>
-        <a href="{{ url_for('cierre_caja') }}">Cierre de caja</a>
-        <a href="{{ url_for('logout') }}">Cerrar Sesión</a>
+        <a class="opcion" href="{{ url_for('nueva_venta') }}">
+            <img src="{{ url_for('static', filename='IMG/vender.png') }}" alt="Venta">
+            <span>Registrar Venta</span>
+        </a>
+
+        <a class="opcion" href="{{ url_for('listar_productos') }}">
+            <img src="{{ url_for('static', filename='IMG/inventario.png') }}" alt="Inventario">
+            <span>Inventario</span>
+        </a>
+
+        <a class="opcion" href="{{ url_for('nuevo_producto') }}">
+            <img src="{{ url_for('static', filename='IMG/producto.png') }}" alt="Nuevo Producto">
+            <span>Nuevo Producto</span>
+        </a>
+
+        <a class="opcion" href="{{ url_for('cierre_caja') }}">
+            <img src="{{ url_for('static', filename='IMG/cierre.png') }}" alt="Cierre">
+            <span>Cierre de Caja</span>
+        </a>
+
+        <a class="opcion" href="{{ url_for('logout') }}">
+            <img src="{{ url_for('static', filename='IMG/sesion.png') }}" alt="Cerrar sesión">
+            <span>Cerrar Sesión</span>
+        </a>
     </div>
 </body>
 </html>

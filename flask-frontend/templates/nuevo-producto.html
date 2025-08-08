@@ -3,16 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <title>Nuevo Producto</title>
+    <link rel="shortcut icon" href="static/images/favicon/favicon-32x32.png" type="image/x-icon">
+    <script src="htps://kit.fontawesome.com/49f031506e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+    <link rel="shortcut icon" href="static/IMG/PANDA icon.ico" type="imagte/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/styles.css') }}">
 </head>
 <body>
-    <h1>Crear nuevo producto</h1>
-    <form method="post">
-        <label>Nombre: <input type="text" name="nombre"></label><br>
-        <label>Precio: <input type="number" name="precio"></label><br>
-        <label>Costo: <input type="number" name="costo"></label><br>
-        <label>Stock: <input type="number" name="stock"></label><br>
-        <button type="submit">Guardar</button>
-    </form>
-    <a href="{{ url_for('listar_productos') }}">Volver</a>
+    <div class="container">
+        <h1>🆕 Crear nuevo producto</h1>
+        <form method="POST" class="formulario">
+            <label for="nombre">Nombre:</label>
+            <input type="text" name="nombre" id="nombre" required>
+
+            <label for="precio">Precio de venta:</label>
+            <input type="number" name="precio" id="precio" required>
+
+            <label for="costo">Costo:</label>
+            <input type="number" name="costo" id="costo" required>
+
+            <label for="stock">Stock inicial:</label>
+            <input type="number" name="stock" id="stock" required>
+
+            <button type="submit" class="boton">Guardar Producto</button>
+        </form>
+
+        <a href="{{ url_for('bienvenida') }}" class="boton-regresar">← Volver al menú principal</a>
+    </div>
 </body>
 </html>
