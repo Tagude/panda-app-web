@@ -17,6 +17,9 @@ import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.ZoneId;
 import java.util.List;
 import java.util.Optional;
 import java.util.Collections;
@@ -260,7 +263,11 @@ public class VentaController {
     @NonNull
     public ResponseEntity<List<Venta>> getVentasDelDia() {
         try {
-            List<Venta> ventas = ventaRepository.getVentasDelDia();
+            LocalDate hoy = LocalDate.now(ZoneId.of("America/Bogota")); // Cambia la zona si es distinta
+            LocalDateTime inicio = hoy.atStartOfDay();
+            LocalDateTime fin = hoy.atTime(LocalTime.MAX);
+
+            List<Venta> ventas = ventaRepository.getVentasDelDia(inicio, fin);
             return new ResponseEntity<>(ventas != null ? ventas : Collections.emptyList(), HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(Collections.emptyList(), HttpStatus.INTERNAL_SERVER_ERROR);

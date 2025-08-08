@@ -7,6 +7,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
@@ -22,17 +23,20 @@ public interface VentaRepository extends JpaRepository<Venta, Long> {
 
     List<Venta> findByFechaOrderByFechaDesc(LocalDate fecha);
 
-    @Query("SELECT SUM(v.cantidad * v.precioUnitario) FROM Venta v WHERE v.producto.id = :idProducto AND v.fecha BETWEEN :fechaInicio AND :fechaFin")
+    @Query("SELECT SUM(v.cantidad * v.precioUnitario) " +
+           "FROM Venta v " +
+           "WHERE v.producto.id = :idProducto " +
+           "AND v.fecha BETWEEN :fechaInicio AND :fechaFin")
     Double getTotalVentasByProductoAndFecha(@Param("idProducto") Long idProducto,
                                            @Param("fechaInicio") LocalDate fechaInicio,
                                            @Param("fechaFin") LocalDate fechaFin);
 
-    /**
-     * Obtiene las ventas del día actual usando consulta nativa para MySQL
-     */
-    @Query(value = "SELECT * FROM venta v WHERE DATE(v.fecha) = CURDATE() ORDER BY v.fecha DESC", nativeQuery = true)
-    List<Venta> getVentasDelDia();
+    @Query("SELECT v FROM Venta v WHERE v.fecha BETWEEN :inicio AND :fin ORDER BY v.fecha DESC")
+    List<Venta> getVentasDelDia(@Param("inicio") LocalDateTime inicio,
+                                @Param("fin") LocalDateTime fin);
 
-    @Query("SELECT COALESCE(SUM(v.cantidad), 0) FROM Venta v WHERE v.producto.id = :idProducto")
+    @Query("SELECT COALESCE(SUM(v.cantidad), 0) " +
+           "FROM Venta v " +
+           "WHERE v.producto.id = :idProducto")
     Integer getTotalCantidadVendidaByProducto(@Param("idProducto") Long idProducto);
 }
